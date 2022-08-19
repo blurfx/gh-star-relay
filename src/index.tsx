@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {RelayEnvironmentProvider} from 'react-relay/hooks';
+
 import App from './App';
+import RelayEnvironment from './relay-env';
 import reportWebVitals from './reportWebVitals';
-import {RelayEnvironmentProvider} from "react-relay/hooks";
-import RelayEnvironment from "./relay-env";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

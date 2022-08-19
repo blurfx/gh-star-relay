@@ -15,7 +15,7 @@ const fetchGQL: FetchFunction = async (params, variables) => {
   });
 
   return await response.json();
-}
+};
 
 export default new Environment({
   network: Network.create(fetchGQL),

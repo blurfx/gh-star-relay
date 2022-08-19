@@ -23,7 +23,11 @@
     "build": "yarn run relay && react-scripts build",
     "relay": "yarn run relay-compiler",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "typecheck": "tsc --noEmit --skipLibCheck",
+    "lint:fix": "eslint --fix src",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -46,7 +50,14 @@
   "devDependencies": {
     "@types/react-relay": "^14.1.1",
     "@types/relay-runtime": "^14.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
     "babel-plugin-relay": "^14.1.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
     "relay-compiler": "^14.1.0",
     "relay-compiler-language-typescript": "^15.0.1"
   }

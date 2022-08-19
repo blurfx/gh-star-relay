@@ -1,8 +1,10 @@
-import {graphql} from "babel-plugin-relay/macro";
-import { fetchQuery } from "react-relay";
-import {useState} from "react";
+import {graphql} from 'babel-plugin-relay/macro';
+import {useState} from 'react';
+import { fetchQuery } from 'react-relay';
+
 import RelayEnvironment from '../relay-env';
-import {useSearchQuery} from "./__generated__/useSearchQuery.graphql";
+
+import {useSearchQuery} from './__generated__/useSearchQuery.graphql';
 
 const searchQuery = graphql`
 query useSearchQuery($query: String!, $after: String) { 
@@ -34,9 +36,9 @@ const useSearch = (): [Repositories, FetchFunction] => {
       query,
       after,
     }).toPromise().then((data) => setRepositories(data?.search.edges ?? []));
-  }
+  };
 
   return [repositories, fetchRepositories];
-}
+};
 
 export default useSearch;
