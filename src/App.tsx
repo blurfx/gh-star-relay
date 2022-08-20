@@ -1,13 +1,12 @@
 import React from 'react';
 
-import useSearch from './hooks/useSearch';
+import SearchResult from './components/SearchResult';
 
 const App: React.FC = () => {
-  const [repositories, fetchRepositories] = useSearch();
   return (
     <div>
       <header className='App-header'>
-        <p>{JSON.stringify(repositories)}</p>
+        <SearchResult query={'그린랩스'} />
       </header>
     </div>
   );
