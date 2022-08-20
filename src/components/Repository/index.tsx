@@ -27,9 +27,17 @@ type Props = {
 };
 
 const Repository: React.FC<Props> = ({ fragmentRef }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _ =  useFragment(fragment, fragmentRef);
-  return null;
+  const { name, description, owner, url, primaryLanguage, stargazerCount } =  useFragment(fragment, fragmentRef);
+
+  return (
+    <div>
+      <p><a href={owner.url}>{owner.login}</a>/<a href={url}>{name}</a></p>
+      <p>{description}</p>
+      <div>
+        <span>{primaryLanguage?.name}</span> <span>⭐️ {stargazerCount}</span>
+      </div>
+    </div>
+  );
 };
 
 export default Repository;
