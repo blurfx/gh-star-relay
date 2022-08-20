@@ -25,7 +25,6 @@ fragment SearchResultFragment on Query
       cursor
       node {
         ... on Repository {
-          id
           ...RepositoryFragment
         }
       }
