@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 
 import SearchResult from './components/SearchResult';
 import useSearchParams from './hooks/useSearchParams';
@@ -7,7 +7,6 @@ const App: React.FC = () => {
   const [params, setParams] = useSearchParams();
   const queryParam = params.get('query') ?? '';
   const [query, setQuery] = useState(queryParam);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const onQueryChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setQuery(e.target.value);
@@ -15,8 +14,7 @@ const App: React.FC = () => {
 
   const onSubmit: React.FormEventHandler = (e) => {
     e.preventDefault();
-    const nextQuery = inputRef?.current?.value ?? '';
-    params.set('query', nextQuery);
+    params.set('query', query);
     setParams(new URLSearchParams(params));
   };
 
@@ -24,7 +22,7 @@ const App: React.FC = () => {
     <div>
       <header className='App-header'>
         <form onSubmit={onSubmit}>
-          <input type='text' name={'query'} ref={inputRef} value={query} onChange={onQueryChange} />
+          <input type='text' name={'query'} value={query} onChange={onQueryChange} />
           <button type={'submit'}>검색</button>
         </form>
         <React.Suspense fallback={'Loading...'}>
