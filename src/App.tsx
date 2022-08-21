@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 
+import {Container, Form, Header, Input, SearchButton} from './App.styles';
 import SearchResult from './components/SearchResult';
 import useSearchParams from './hooks/useSearchParams';
 
@@ -19,17 +20,17 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
-      <header className='App-header'>
-        <form onSubmit={onSubmit}>
-          <input type='text' name={'query'} value={query} onChange={onQueryChange} />
-          <button type={'submit'}>검색</button>
-        </form>
-        <React.Suspense fallback={'Loading...'}>
-          { queryParam && <SearchResult query={queryParam} /> }
-        </React.Suspense>
-      </header>
-    </div>
+    <Container>
+      <Header>
+        <Form onSubmit={onSubmit}>
+          <Input type='text' name={'query'} value={query} onChange={onQueryChange} />
+          <SearchButton type={'submit'}>검색</SearchButton>
+        </Form>
+      </Header>
+      <React.Suspense fallback={'Loading...'}>
+        { queryParam && <SearchResult query={queryParam} /> }
+      </React.Suspense>
+    </Container>
   );
 };
 
