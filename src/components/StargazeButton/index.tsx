@@ -3,6 +3,7 @@ import React from 'react';
 import {useFragment, useMutation} from 'react-relay';
 
 import {StargazeButtonFragment$key} from './__generated__/StargazeButtonFragment.graphql';
+import {Container} from './styles';
 
 
 type Props = {
@@ -51,7 +52,12 @@ const StargazeButton: React.FC<Props> = ({ fragmentRef }) => {
       addStar({ variables: { id }});
     }
   };
-  return <button type={'button'} aria-pressed={viewerHasStarred} onClick={onClick}>{ viewerHasStarred ? 'Starred' : 'Star' }</button>;
+
+  return (
+    <Container type={'button'} aria-pressed={viewerHasStarred} onClick={onClick}>
+      { viewerHasStarred ? '⭐ Starred' : '☆ Star' }
+    </Container>
+  );
 };
 
 export default StargazeButton;

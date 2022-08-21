@@ -5,6 +5,7 @@ import {useLazyLoadQuery, usePaginationFragment} from 'react-relay';
 import Repository from '../Repository';
 
 import {SearchResultFragment$key} from './__generated__/SearchResultFragment.graphql';
+import {Container} from './styles';
 
 const PAGINATION_SIZE = 10;
 const searchResultQuery = graphql`
@@ -48,7 +49,7 @@ const SearchResult: React.FC<Props> = ({ query }) => {
     loadNext(PAGINATION_SIZE);
   };
   return (
-    <div>
+    <Container>
       { hasPrevious && (
         <button type={'button'} onClick={onClickPrevButton}>Load previous result</button>
       )}
@@ -58,7 +59,7 @@ const SearchResult: React.FC<Props> = ({ query }) => {
       { hasNext && (
         <button type={'button'} onClick={onClickNextButton}>Load next result</button>
       )}
-    </div>
+    </Container>
   );
 };
 
