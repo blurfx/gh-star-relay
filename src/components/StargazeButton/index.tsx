@@ -43,9 +43,13 @@ mutation StargazeButtonRemoveStarMutation($id: ID!) {
 const StargazeButton: React.FC<Props> = ({ fragmentRef }) => {
   const stargazeFragment = useFragment(fragment, fragmentRef);
   const { id, viewerHasStarred } = stargazeFragment;
-  const [addStar] = useMutation(AddStarMutation);
-  const [removeStar] = useMutation(RemoveStarMutation);
+  const [addStar, isAddStarInFlight] = useMutation(AddStarMutation);
+  const [removeStar, isRemoveStarInFlight] = useMutation(RemoveStarMutation);
   const onClick = () => {
+    if (isAddStarInFlight || isRemoveStarInFlight) {
+      return;
+    }
+
     if (viewerHasStarred) {
       removeStar({ variables: { id }});
     } else {
