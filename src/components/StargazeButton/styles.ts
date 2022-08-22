@@ -8,4 +8,5 @@ export const Container = styled('button', {
   background: 'white',
 
   appearance: 'none',
+  cursor: 'pointer',
 });
