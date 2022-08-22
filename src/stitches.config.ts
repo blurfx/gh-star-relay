@@ -7,6 +7,7 @@ export const { styled } = createStitches({
       gray100: '#ddd',
       gray200: '#777',
       gray300: '#555f5f',
+      blue: '#438eff',
     }
   },
   utils: {
