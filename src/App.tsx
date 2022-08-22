@@ -7,6 +7,7 @@ import useSearchParams from './hooks/useSearchParams';
 const App: React.FC = () => {
   const [params, setParams] = useSearchParams();
   const queryParam = params.get('query') ?? '';
+  const cursor = params.get('cursor') ?? undefined;
   const [query, setQuery] = useState(queryParam);
 
   const onQueryChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -28,7 +29,7 @@ const App: React.FC = () => {
         </Form>
       </Header>
       <React.Suspense fallback={'Loading...'}>
-        { queryParam && <SearchResult query={queryParam} /> }
+        { queryParam && <SearchResult query={queryParam} cursor={cursor} /> }
       </React.Suspense>
     </Container>
   );

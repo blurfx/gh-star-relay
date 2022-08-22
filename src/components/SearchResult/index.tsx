@@ -37,22 +37,18 @@ fragment SearchResultFragment on Query
 
 type Props = {
   query: string;
+  cursor?: string;
 };
 
-const SearchResult: React.FC<Props> = ({ query }) => {
-  const lazyLoadQuery = useLazyLoadQuery(searchResultQuery, { query }) as SearchResultFragment$key;
-  const { data, hasNext, hasPrevious, loadNext, loadPrevious } = usePaginationFragment(searchResultFragment, lazyLoadQuery);
-  const onClickPrevButton = () => {
-    loadPrevious(PAGINATION_SIZE);
-  };
+const SearchResult: React.FC<Props> = ({ query, cursor }) => {
+  const after = cursor ? btoa(`cursor:${cursor}`) : null;
+  const lazyLoadQuery = useLazyLoadQuery(searchResultQuery, { query, after }) as SearchResultFragment$key;
+  const { data, hasNext, loadNext } = usePaginationFragment(searchResultFragment, lazyLoadQuery);
   const onClickNextButton = () => {
     loadNext(PAGINATION_SIZE);
   };
   return (
     <Container>
-      { hasPrevious && (
-        <button type={'button'} onClick={onClickPrevButton}>Load previous result</button>
-      )}
       {data.search?.edges?.map((edge) => (
         <Repository key={edge!.cursor} fragmentRef={edge!.node!} />
       ))}
