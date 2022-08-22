@@ -7,7 +7,7 @@ type Props = React.PropsWithChildren<{
 }>;
 
 const Language: React.FC<Props> = ({ color, children }) => {
-  return <Container css={{ '&:before': { bgColor: color } }}>{ children }</Container>;
+  return <Container css={{ '&:before': { backgroundColor: color } }}>{ children }</Container>;
 };
 
 export default Language;

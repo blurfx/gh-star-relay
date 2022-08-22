@@ -10,10 +10,4 @@ export const { styled } = createStitches({
       blue: '#438eff',
     }
   },
-  utils: {
-    bgColor: (value: string) => ({
-      backgroundColor: value,
-    }),
-  }
-
 });
